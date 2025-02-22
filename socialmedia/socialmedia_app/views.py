@@ -50,7 +50,9 @@ class UserProfileListAPIView(generics.ListAPIView):
     serializer_class = UserProfileListLSerializer
     pagination_class = UserProfilePagination
     permission_classes = [permissions.IsAuthenticated]
-
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['username']
+    
     def get_queryset(self):
         return UserProfile.objects.filter(id=self.request.user.id)
 

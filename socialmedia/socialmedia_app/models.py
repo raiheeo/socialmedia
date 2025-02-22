@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class UserProfile(models.Model):
+    username = models.CharField(max_length=64)
     bio = models.CharField (null=True, blank=True, max_length=128)
     image = models.ImageField(upload_to='user.image/')
     website = models.URLField(null=True, blank=True)
